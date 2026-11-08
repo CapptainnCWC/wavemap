@@ -53,7 +53,9 @@ No accounts, no ads, no trackers, and no paid tier. Everything except the speed 
 
 You need JDK 17 and the Android SDK (platform 35). Kotlin 2.2, Jetpack Compose and Material 3. The only dependencies are AndroidX, kotlinx.coroutines and kotlinx.serialization.
 
-Release builds are signed with the debug key unless you configure your own `signingConfig`.
+Release builds are signed with the key described in a git-ignored `keystore.properties` in the project root (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`). Without that file they fall back to the debug key.
+
+Ready-made APKs are on the [Releases](https://github.com/CapptainnCWC/wavemap/releases) page.
 
 ## Project layout
 
