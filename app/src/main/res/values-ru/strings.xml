@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_networks">Сети</string>
+    <string name="tab_channels">Каналы</string>
+    <string name="tab_signal">Сигнал</string>
+    <string name="tab_survey">Обследование</string>
+    <string name="tab_speed">Скорость</string>
+
+    <string name="permission_title">Нужен доступ к местоположению</string>
+    <string name="permission_text">Android показывает Wi-Fi сети поблизости только приложениям с разрешением на местоположение. WaveMap не отслеживает вас и работает полностью офлайн (кроме теста скорости).</string>
+    <string name="permission_grant">Разрешить</string>
+    <string name="open_settings">Настройки</string>
+
+    <string name="hidden_network">Скрытая сеть</string>
+    <string name="wifi_off">Wi-Fi выключен. Включите его, чтобы сканировать.</string>
+    <string name="location_off">Геолокация выключена. Без неё Android не отдаёт результаты сканирования.</string>
+    <string name="throttled">Android разрешает 4 сканирования за 2 минуты. Отключите «Ограничение поиска сетей Wi-Fi» в параметрах разработчика для живого обновления.</string>
+    <string name="developer_options">Открыть</string>
+
+    <string name="networks_found">Сетей: %d</string>
+    <string name="pause_scan">Приостановить сканирование</string>
+    <string name="resume_scan">Продолжить сканирование</string>
+    <string name="scan_interval">Интервал сканирования</string>
+    <string name="every_n_seconds">Каждые %d с</string>
+    <string name="sort">Сортировка</string>
+    <string name="sort_signal">По сигналу</string>
+    <string name="sort_name">По имени</string>
+    <string name="sort_channel">По каналу</string>
+    <string name="search_hint">Поиск по имени или BSSID</string>
+    <string name="all_bands">Все</string>
+    <string name="no_networks">Сети пока не найдены</string>
+    <string name="connected">подключено</string>
+    <string name="ch_short">кан.</string>
+    <string name="back">Назад</string>
+    <string name="network_gone">Сеть сейчас не видна</string>
+    <string name="quality_value">Качество %d%%</string>
+    <string name="min_avg_max">Мин %1$d · сред %2$d · макс %3$d dBm</string>
+    <string name="signal_history">История сигнала</string>
+    <string name="frequency">Частота</string>
+    <string name="channel">Канал</string>
+    <string name="channel_width">Ширина канала</string>
+    <string name="center_frequency">Центр. частота</string>
+    <string name="standard">Стандарт</string>
+    <string name="security">Защита</string>
+    <string name="distance">Расстояние (оценка)</string>
+    <string name="last_seen">Последний раз</string>
+    <string name="capabilities">Возможности</string>
+
+    <string name="channels_title">Загрузка каналов</string>
+    <string name="best_channels">Рекомендуемые каналы</string>
+    <string name="best_channels_hint">Оценка по суммарной мощности сетей, перекрывающих канал. Чем меньше, тем лучше.</string>
+    <string name="channel_free">свободен</string>
+    <string name="channel_load">%1$d точек, всего %2$d dBm</string>
+    <string name="dfs_note">Каналы 52–144 — DFS: роутер обязан уйти с них при обнаружении радара.</string>
+
+    <string name="signal_title">Сигнал во времени</string>
+    <string name="minutes_short">%d мин</string>
+    <string name="auto_top">Топ %d</string>
+
+    <string name="speed_title">Тест скорости</string>
+    <string name="speed_idle">Готово к запуску</string>
+    <string name="ping">Пинг</string>
+    <string name="jitter">Джиттер</string>
+    <string name="download">Загрузка</string>
+    <string name="upload">Отдача</string>
+    <string name="speed_done">Готово</string>
+    <string name="speed_error">Ошибка теста</string>
+    <string name="stop">Стоп</string>
+    <string name="start_test">Начать тест</string>
+    <string name="speed_server_note">Сервер: speed.cloudflare.com. Тест передаёт до нескольких сотен МБ.</string>
+    <string name="connection">Текущее подключение</string>
+    <string name="no_connection">Нет активного подключения</string>
+    <string name="connection_type">Тип</string>
+    <string name="not_wifi">Не Wi-Fi</string>
+    <string name="signal">Сигнал</string>
+    <string name="link_speed">Скорость канала</string>
+    <string name="rx_tx_speed">Приём / передача</string>
+    <string name="gateway">Шлюз</string>
+
+    <string name="survey_title">Обследование</string>
+    <string name="new_project">Новый проект</string>
+    <string name="survey_intro">Загрузите план помещения, ходите с телефоном и отмечайте на плане, где стоите. WaveMap построит тепловые карты сигнала, SNR, помех и числа точек доступа. Режим планирования предсказывает покрытие от виртуальных точек доступа.</string>
+    <string name="project_summary">Точек: %1$d, плановых AP: %2$d</string>
+    <string name="delete">Удалить</string>
+    <string name="create_failed">Не удалось создать проект</string>
+    <string name="delete_project_q">Удалить проект?</string>
+    <string name="cancel">Отмена</string>
+    <string name="default_project_name">Моё обследование</string>
+    <string name="project_name">Название</string>
+    <string name="plan_width_m">Ширина плана, м</string>
+    <string name="plan_width_hint">Реальная ширина области на плане. Нужна для масштабной линейки и планирования покрытия.</string>
+    <string name="choose_plan_image">Выбрать изображение плана</string>
+    <string name="plan_height_m">Высота, м (только для сетки)</string>
+    <string name="blank_grid">Начать на пустой сетке</string>
+
+    <string name="metric_signal">Уровень сигнала</string>
+    <string name="metric_snr">Сигнал/шум</string>
+    <string name="metric_sir">Сигнал/помехи</string>
+    <string name="metric_ap_count">Число AP</string>
+    <string name="metric_planned">Прогноз сигнала</string>
+    <string name="measure_throttled">Android ограничил сканирование, сохранены кэшированные данные. Подождите немного перед следующей точкой.</string>
+    <string name="share">Поделиться</string>
+    <string name="target_any">Сильнейшая из всех</string>
+    <string name="edit">Изменить</string>
+    <string name="export">Экспорт</string>
+    <string name="export_png">Тепловая карта (PNG)</string>
+    <string name="export_csv">Замеры (CSV)</string>
+    <string name="mode_measure">Замер</string>
+    <string name="mode_heatmap">Карта</string>
+    <string name="mode_plan">План</string>
+    <string name="measuring">Сканирование…</string>
+    <string name="measure_hint">Встаньте неподвижно и коснитесь своего места на плане. Масштаб — щипком. Коснитесь точки, чтобы посмотреть или удалить её.</string>
+    <string name="points_count">Точек: %d</string>
+    <string name="undo">Отменить</string>
+    <string name="no_points_yet">Замеров пока нет. Перейдите в «Замер» и коснитесь плана.</string>
+    <string name="plan_hint">Коснитесь плана, чтобы поставить виртуальную точку доступа; коснитесь её снова, чтобы изменить мощность или диапазон. Покрытие считается по модели затухания в помещении.</string>
+    <string name="network_label">Сеть</string>
+    <string name="point_n">Точка %d</string>
+    <string name="point_aps">Слышно точек доступа: %d</string>
+    <string name="point_cached">кэшированный скан</string>
+    <string name="virtual_ap">Виртуальная точка доступа</string>
+    <string name="tx_power">Мощность передатчика: %d dBm</string>
+    <string name="save">Сохранить</string>
+</resources>

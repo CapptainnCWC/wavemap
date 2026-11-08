@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">WaveMap</string>
+
+    <string name="tab_networks">Networks</string>
+    <string name="tab_channels">Channels</string>
+    <string name="tab_signal">Signal</string>
+    <string name="tab_survey">Survey</string>
+    <string name="tab_speed">Speed</string>
+
+    <string name="permission_title">Location access is needed</string>
+    <string name="permission_text">Android only shows nearby Wi-Fi networks to apps with location permission. WaveMap does not track your location and works fully offline (except for the speed test).</string>
+    <string name="permission_grant">Grant access</string>
+    <string name="open_settings">Settings</string>
+
+    <string name="hidden_network">Hidden network</string>
+    <string name="wifi_off">Wi-Fi is turned off. Turn it on to scan.</string>
+    <string name="location_off">Location services are off. Android returns no scan results without them.</string>
+    <string name="throttled">Android limits scans to 4 per 2 minutes. Disable \"Wi-Fi scan throttling\" in developer options for live updates.</string>
+    <string name="developer_options">Open</string>
+
+    <string name="networks_found">%d networks</string>
+    <string name="pause_scan">Pause scanning</string>
+    <string name="resume_scan">Resume scanning</string>
+    <string name="scan_interval">Scan interval</string>
+    <string name="every_n_seconds">Every %d s</string>
+    <string name="sort">Sort</string>
+    <string name="sort_signal">By signal</string>
+    <string name="sort_name">By name</string>
+    <string name="sort_channel">By channel</string>
+    <string name="search_hint">Search by name or BSSID</string>
+    <string name="all_bands">All</string>
+    <string name="no_networks">No networks found yet</string>
+    <string name="connected">connected</string>
+    <string name="ch_short">ch</string>
+    <string name="back">Back</string>
+    <string name="network_gone">This network is not visible right now</string>
+    <string name="quality_value">Quality %d%%</string>
+    <string name="min_avg_max">Min %1$d · avg %2$d · max %3$d dBm</string>
+    <string name="signal_history">Signal history</string>
+    <string name="frequency">Frequency</string>
+    <string name="channel">Channel</string>
+    <string name="channel_width">Channel width</string>
+    <string name="center_frequency">Center frequency</string>
+    <string name="standard">Standard</string>
+    <string name="security">Security</string>
+    <string name="distance">Distance (est.)</string>
+    <string name="last_seen">Last seen</string>
+    <string name="capabilities">Capabilities</string>
+
+    <string name="channels_title">Channel usage</string>
+    <string name="best_channels">Recommended channels</string>
+    <string name="best_channels_hint">Ranked by the total power of networks overlapping each channel. Lower is better.</string>
+    <string name="channel_free">free</string>
+    <string name="channel_load">%1$d APs, %2$d dBm total</string>
+    <string name="dfs_note">Channels 52–144 are DFS: the router may have to leave them when radar is detected.</string>
+
+    <string name="signal_title">Signal over time</string>
+    <string name="minutes_short">%d min</string>
+    <string name="auto_top">Top %d</string>
+
+    <string name="speed_title">Speed test</string>
+    <string name="speed_idle">Ready</string>
+    <string name="ping">Ping</string>
+    <string name="jitter">Jitter</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="speed_done">Done</string>
+    <string name="speed_error">Test failed</string>
+    <string name="stop">Stop</string>
+    <string name="start_test">Start test</string>
+    <string name="speed_server_note">Server: speed.cloudflare.com. The test transfers up to a few hundred MB.</string>
+    <string name="connection">Current connection</string>
+    <string name="no_connection">No active connection</string>
+    <string name="connection_type">Type</string>
+    <string name="not_wifi">Not Wi-Fi</string>
+    <string name="signal">Signal</string>
+    <string name="link_speed">Link speed</string>
+    <string name="rx_tx_speed">Rx / Tx</string>
+    <string name="gateway">Gateway</string>
+
+    <string name="survey_title">Site survey</string>
+    <string name="new_project">New project</string>
+    <string name="survey_intro">Load a floor plan, walk around and tap where you stand to take measurements. WaveMap turns them into heatmaps of signal, SNR, interference and AP count. Planning mode predicts coverage from virtual access points.</string>
+    <string name="project_summary">%1$d points, %2$d planned APs</string>
+    <string name="delete">Delete</string>
+    <string name="create_failed">Could not create project</string>
+    <string name="delete_project_q">Delete project?</string>
+    <string name="cancel">Cancel</string>
+    <string name="default_project_name">My survey</string>
+    <string name="project_name">Name</string>
+    <string name="plan_width_m">Plan width, m</string>
+    <string name="plan_width_hint">The real width of the area shown on the plan. Used for the scale bar and coverage planning.</string>
+    <string name="choose_plan_image">Choose floor plan image</string>
+    <string name="plan_height_m">Height, m (blank grid only)</string>
+    <string name="blank_grid">Start on a blank grid</string>
+
+    <string name="metric_signal">Signal level</string>
+    <string name="metric_snr">Signal/noise</string>
+    <string name="metric_sir">Signal/interference</string>
+    <string name="metric_ap_count">AP count</string>
+    <string name="metric_planned">Predicted signal</string>
+    <string name="measure_throttled">Scan was throttled by Android, cached results were saved. Wait a bit before the next point.</string>
+    <string name="share">Share</string>
+    <string name="target_any">Strongest of all</string>
+    <string name="edit">Edit</string>
+    <string name="export">Export</string>
+    <string name="export_png">Heatmap image (PNG)</string>
+    <string name="export_csv">Measurements (CSV)</string>
+    <string name="mode_measure">Measure</string>
+    <string name="mode_heatmap">Heatmap</string>
+    <string name="mode_plan">Plan</string>
+    <string name="measuring">Scanning…</string>
+    <string name="measure_hint">Stand still and tap your position on the plan. Pinch to zoom. Tap a point to inspect or delete it.</string>
+    <string name="points_count">%d points</string>
+    <string name="undo">Undo</string>
+    <string name="no_points_yet">No measurements yet. Switch to Measure and tap the plan.</string>
+    <string name="plan_hint">Tap to place a virtual access point, tap it again to change power or band. Coverage uses a log-distance indoor model.</string>
+    <string name="network_label">Network</string>
+    <string name="point_n">Point %d</string>
+    <string name="point_aps">%d access points heard</string>
+    <string name="point_cached">cached scan</string>
+    <string name="virtual_ap">Virtual access point</string>
+    <string name="tx_power">Transmit power: %d dBm</string>
+    <string name="save">Save</string>
+</resources>
