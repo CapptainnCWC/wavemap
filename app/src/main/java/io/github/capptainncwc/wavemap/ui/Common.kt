@@ -38,7 +38,9 @@ import io.github.capptainncwc.wavemap.R
 
 /** Stable, distinguishable colour per access point. */
 fun networkColor(bssid: String): Color {
-    val hue = ((bssid.hashCode().toLong() and 0x7fffffff) * 137 % 360).toFloat()
+    // Mix the hash so neighbouring MACs (often the same router) land far apart on the colour wheel.
+    val mixed = (bssid.lowercase().hashCode() * -0x61c88647) ushr 8
+    val hue = (mixed % 360).toFloat()
     return Color.hsv(hue, 0.7f, 0.85f)
 }
 

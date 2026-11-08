@@ -99,9 +99,12 @@ fun ChannelsScreen(vm: AppViewModel) {
                 }
             }
             Column(Modifier.verticalScroll(rememberScrollState())) {
-                BoxWithConstraints(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
+                // Measure the screen width outside the scroller: inside it the width is unbounded.
+                BoxWithConstraints(Modifier.fillMaxWidth()) {
                     val width = spec.chartWidth?.coerceAtLeast(maxWidth) ?: maxWidth
-                    ChannelGraph(inBand, spec, Modifier.width(width).height(320.dp).padding(8.dp))
+                    Box(Modifier.horizontalScroll(rememberScrollState())) {
+                        ChannelGraph(inBand, spec, Modifier.width(width).height(320.dp).padding(8.dp))
+                    }
                 }
                 Recommendations(inBand, spec)
             }
@@ -165,7 +168,8 @@ private fun ChannelGraph(networks: List<WifiNetwork>, spec: BandSpec, modifier: 
             drawText(
                 label,
                 topLeft = Offset(
-                    ((x0 + x1) / 2 - label.size.width / 2f).coerceIn(left, size.width - label.size.width),
+                    ((x0 + x1) / 2 - label.size.width / 2f)
+                        .coerceIn(left, (size.width - label.size.width).coerceAtLeast(left)),
                     (top - label.size.height - 1.dp.toPx()).coerceAtLeast(0f),
                 ),
             )
@@ -173,16 +177,21 @@ private fun ChannelGraph(networks: List<WifiNetwork>, spec: BandSpec, modifier: 
     }
 }
 
+private fun isDfs(band: Band, ch: Int) = band == Band.GHZ_5 && ch in 52..144
+
 @Composable
 private fun Recommendations(networks: List<WifiNetwork>, spec: BandSpec) {
-    // Load on a channel = summed power of every AP whose occupied spectrum overlaps that 20 MHz channel.
+    // Load on a channel = summed power of every foreign AP whose occupied spectrum overlaps that 20 MHz channel.
+    // Your own network (the SSID you are connected to) is what you are choosing a channel for, so it does not count.
+    val ownSsid = networks.firstOrNull { it.connected }?.ssid?.takeIf { it.isNotEmpty() }
     val ranked = remember(networks, spec) {
+        val foreign = networks.filter { ownSsid == null || it.ssid != ownSsid }
         spec.candidates.map { ch ->
             val f = freqOf(spec.band, ch)
-            val overlapping = networks.filter { WifiMath.overlaps(f, 20, it.centerFrequency, it.widthMhz) }
+            val overlapping = foreign.filter { WifiMath.overlaps(f, 20, it.centerFrequency, it.widthMhz) }
             val mw = overlapping.sumOf { WifiMath.dbmToMw(it.rssi.toDouble()) }
             Triple(ch, overlapping.size, if (mw > 0) WifiMath.mwToDbm(mw) else null)
-        }.sortedWith(compareBy({ it.third ?: -200.0 }, { it.second }))
+        }.sortedWith(compareBy({ it.third ?: -200.0 }, { isDfs(spec.band, it.first) }, { it.second }))
     }
     Card(Modifier.fillMaxWidth().padding(16.dp)) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -196,9 +205,9 @@ private fun Recommendations(networks: List<WifiNetwork>, spec: BandSpec) {
             ranked.take(if (spec.band == Band.GHZ_2_4) 3 else 6).forEachIndexed { i, (ch, count, dbm) ->
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        "${i + 1}. ${stringResource(R.string.ch_short)} $ch",
+                        "${i + 1}. ${stringResource(R.string.ch_short)} $ch" + if (isDfs(spec.band, ch)) " (DFS)" else "",
                         fontWeight = if (i == 0) FontWeight.Bold else null,
-                        modifier = Modifier.width(110.dp),
+                        modifier = Modifier.width(150.dp),
                     )
                     Text(
                         if (count == 0) stringResource(R.string.channel_free)

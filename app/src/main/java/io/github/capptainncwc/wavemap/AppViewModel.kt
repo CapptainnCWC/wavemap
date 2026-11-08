@@ -93,7 +93,9 @@ class AppViewModel(app: Application) : AndroidViewModel(app) {
         scanJob = viewModelScope.launch {
             while (isActive) {
                 _status.value = DeviceStatus(scanner.isWifiEnabled, scanner.isLocationEnabled)
-                if (_scanning.value) scanner.requestScan() else scanner.publish(addToHistory = false)
+                // Android allows 4 scans per 2 minutes: while a survey is open, keep them for measurements.
+                if (_scanning.value && _project.value == null) scanner.requestScan()
+                else scanner.publish(addToHistory = false)
                 _connection.value = withContext(Dispatchers.IO) { runCatching { scanner.connectionInfo() }.getOrNull() }
                 delay(_intervalSec.value * 1000L)
             }

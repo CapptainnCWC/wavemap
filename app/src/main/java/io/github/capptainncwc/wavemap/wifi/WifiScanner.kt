@@ -114,7 +114,8 @@ class WifiScanner(context: Context) {
         }
         val isFresh = if (requestScan()) waiter.await() != null else {
             waiter.cancel()
-            false
+            // Refused, but results from a scan that finished moments ago are still current.
+            System.currentTimeMillis() - _lastFreshScan.value < RECENT_SCAN_MS
         }
         ScanOutcome(networks.value, isFresh)
     }
@@ -181,6 +182,7 @@ class WifiScanner(context: Context) {
 
     companion object {
         private const val MAX_SAMPLES = 400
+        private const val RECENT_SCAN_MS = 8_000L
         private const val HISTORY_TTL_MS = 15 * 60_000L
     }
 }

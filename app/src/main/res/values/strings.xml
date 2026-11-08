@@ -50,7 +50,7 @@
 
     <string name="channels_title">Channel usage</string>
     <string name="best_channels">Recommended channels</string>
-    <string name="best_channels_hint">Ranked by the total power of networks overlapping each channel. Lower is better.</string>
+    <string name="best_channels_hint">Ranked by the total power of other networks overlapping each channel (your own network is ignored). Lower is better.</string>
     <string name="channel_free">free</string>
     <string name="channel_load">%1$d APs, %2$d dBm total</string>
     <string name="dfs_note">Channels 52–144 are DFS: the router may have to leave them when radar is detected.</string>

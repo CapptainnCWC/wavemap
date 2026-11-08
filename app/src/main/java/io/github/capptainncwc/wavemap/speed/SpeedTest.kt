@@ -2,6 +2,9 @@ package io.github.capptainncwc.wavemap.speed
 
 import java.io.IOException
 import java.net.HttpURLConnection
+import java.net.InetAddress
+import java.net.InetSocketAddress
+import java.net.Socket
 import java.net.URL
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong
@@ -92,19 +95,26 @@ class SpeedTest(
         result
     }
 
+    /**
+     * Latency as TCP handshake time, which is one network round trip. Timing HTTP requests instead
+     * would add TLS handshakes whenever a connection is not reused.
+     */
     private fun ping(): Pair<Double, Double> {
+        val url = URL(baseUrl)
+        val address = InetAddress.getByName(url.host)
+        val port = if (url.port > 0) url.port else url.defaultPort
         val times = mutableListOf<Double>()
-        repeat(PING_COUNT + 1) { i ->
-            val t0 = System.nanoTime()
-            val c = open("$baseUrl/__down?bytes=0")
-            c.inputStream.use { it.readBytes() }
-            val ms = (System.nanoTime() - t0) / 1e6
-            // The first request pays for DNS and the TLS handshake.
-            if (i > 0) times += ms
+        repeat(PING_COUNT) {
+            Socket().use { socket ->
+                val t0 = System.nanoTime()
+                socket.connect(InetSocketAddress(address, port), 3_000)
+                times += (System.nanoTime() - t0) / 1e6
+            }
         }
-        val avg = times.average()
-        val jitter = times.zipWithNext { a, b -> abs(a - b) }.average().takeIf { !it.isNaN() } ?: 0.0
-        return avg to jitter
+        val sorted = times.sorted()
+        val median = (sorted[(sorted.size - 1) / 2] + sorted[sorted.size / 2]) / 2
+        val jitter = times.zipWithNext { a, b -> abs(a - b) }.average()
+        return median to jitter
     }
 
     private suspend fun measure(
@@ -155,7 +165,7 @@ class SpeedTest(
         }
 
     private companion object {
-        const val PING_COUNT = 6
+        const val PING_COUNT = 8
         const val DOWN_CHUNK = 25_000_000
         const val UP_CHUNK = 8_000_000
     }

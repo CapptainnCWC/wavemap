@@ -48,9 +48,9 @@
 
     <string name="channels_title">Загрузка каналов</string>
     <string name="best_channels">Рекомендуемые каналы</string>
-    <string name="best_channels_hint">Оценка по суммарной мощности сетей, перекрывающих канал. Чем меньше, тем лучше.</string>
+    <string name="best_channels_hint">Оценка по суммарной мощности чужих сетей, перекрывающих канал (ваша сеть не учитывается). Чем меньше, тем лучше.</string>
     <string name="channel_free">свободен</string>
-    <string name="channel_load">%1$d точек, всего %2$d dBm</string>
+    <string name="channel_load">точек доступа: %1$d, сумма %2$d dBm</string>
     <string name="dfs_note">Каналы 52–144 — DFS: роутер обязан уйти с них при обнаружении радара.</string>
 
     <string name="signal_title">Сигнал во времени</string>
